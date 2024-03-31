@@ -10,6 +10,6 @@ import (
 // if they are not equal. It is a loose BDD implementation.
 func WantGot(t *testing.T, want, got any, behavior string) {
 	if !reflect.DeepEqual(want, got) {
-		t.Errorf(fmt.Sprintf("%v should %v", t.Name(), behavior))
+		t.Fatalf(fmt.Sprintf("%v should %v", t.Name(), behavior))
 	}
 }
