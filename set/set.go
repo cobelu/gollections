@@ -8,7 +8,7 @@ func New[C comparable]() Set[C] {
 	return make(Set[C], 0)
 }
 
-func From[C comparable](c []C) Set[C] {
+func FromSlice[C comparable](c []C) Set[C] {
 	return make(Set[C], len(c)).AddAll(c)
 }
 
@@ -79,4 +79,12 @@ func (s Set[C]) SubsetOf(other Set[C]) bool {
 		}
 	}
 	return true
+}
+
+func (s Set[C]) ToSlice() []C {
+	c := make([]C, s.Size())
+	for k := range s {
+		c = append(c, k)
+	}
+	return c
 }

@@ -8,9 +8,9 @@ import (
 
 func TestSet(t *testing.T) {
 
-	s1 := From([]int{1, 2, 3})
-	s2 := From([]int{3, 2, 1})
-	s3 := From([]int{2, 3, 4})
+	s1 := FromSlice([]int{1, 2, 3})
+	s2 := FromSlice([]int{3, 2, 1})
+	s3 := FromSlice([]int{2, 3, 4})
 
 	t.Run("New", func(t *testing.T) {
 		t.Parallel()
@@ -29,7 +29,7 @@ func TestSet(t *testing.T) {
 	t.Run("Pop", func(t *testing.T) {
 		t.Parallel()
 
-		s := From([]int{1}).Pop(1)
+		s := FromSlice([]int{1}).Pop(1)
 		th.WantGot(t, 0, s.Size(), "remove element")
 	})
 
@@ -78,7 +78,7 @@ func TestSet(t *testing.T) {
 	t.Run("Size", func(t *testing.T) {
 		t.Parallel()
 
-		s := From([]int{1, 2, 3, 4, 5})
+		s := FromSlice([]int{1, 2, 3, 4, 5})
 		th.WantGot(t, 5, s.Size(), "have 5 elements")
 	})
 
@@ -91,14 +91,14 @@ func TestSet(t *testing.T) {
 	t.Run("SubsetOf_true", func(t *testing.T) {
 		t.Parallel()
 
-		s := From([]int{1, 2})
+		s := FromSlice([]int{1, 2})
 		th.WantGot(t, s.SubsetOf(s1), true, "be a subset")
 	})
 
 	t.Run("SubsetOf_false", func(t *testing.T) {
 		t.Parallel()
 
-		s := From([]int{1, 2, 3, 4})
+		s := FromSlice([]int{1, 2, 3, 4})
 		th.WantGot(t, s.SubsetOf(s1), false, "not be a subset")
 	})
 
